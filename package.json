@@ -2,10 +2,11 @@
   "name": "srs-system",
   "version": "0.0.1",
   "description": "A (naive) javascript Spaced-Repetition System (SRS)",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "npm test"
+    "build": "microbundle build -i ./index.js -o lib/index.js --no-pkg-main -f cjs --no-compress --sourcemap false"
   },
+  "module": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ayamflow/srs-system.git"

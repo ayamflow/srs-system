@@ -1,4 +1,9 @@
 export class Card {
+    #timestamp
+    #wrongAnswersCount
+    #stage
+    #enabled
+    
     constructor() {
         this.reset()
     }
