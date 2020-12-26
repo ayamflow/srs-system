@@ -1,0 +1,29 @@
+{
+  "name": "srs-system",
+  "version": "0.0.1",
+  "description": "A (naive) javascript Spaced-Repetition System (SRS)",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayamflow/srs-system.git"
+  },
+  "keywords": [
+    "srs",
+    "learning",
+    "spaced",
+    "repetition",
+    "system"
+  ],
+  "author": "Florian Morel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ayamflow/srs-system/issues"
+  },
+  "homepage": "https://github.com/ayamflow/srs-system#readme",
+  "devDependencies": {
+    "microbundle": "^0.13.0"
+  }
+}
