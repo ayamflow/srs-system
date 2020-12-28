@@ -40,7 +40,15 @@ export class Scheduler {
     }
 
     update(card) {
-        this.compute(card, this.intervals)
+        // use user-provided function to update card stage
+        card.stage = this.#computeStage(card)
+        // Clamp stage between intervals length
+        // and 1 (min stage)
+        card.stage = Math.min(card.stage, intervals.length - 1)
+        card.stage = Math.max(card.stage, 1)
+        
+        // set card next review time
+        card.timestamp = Date.now() + this.#intervals[card.stage].interval
     }
 
     toJSON() {

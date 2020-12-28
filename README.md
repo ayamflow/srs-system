@@ -17,9 +17,8 @@ let scheduler = new Scheduler({
     computeStage: function(card) {
         let now = Date.now()
         let errorFactor = Math.ceil(card.wrongAnswersCount * 0.5)
-        card.stage = card.stage - errorFactor
-        card.stage = Math.max(card.stage, intervals.length - 1)
-        card.timestamp = now + intervals[card.stage].interval
+        let stage = card.stage - errorFactor
+        return stage
     },
 
     intervals: [{
