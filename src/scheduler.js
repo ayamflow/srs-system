@@ -1,12 +1,16 @@
 import { } from './card'
 
 export class Scheduler {
+    #intervals
+    #computeStage
+
     constructor(options = {}) {
         if (!options.computeStage) throw new Error('A `computeStage` method must be provided')
         if (!options.intervals) throw new Error('An array of `intervals` must be provided')
 
         this.cards = options.cards || []
-        this.compute = options.compute
+        this.#intervals = options.intervals
+        this.#computeStage = options.computeStage
     }
 
     // return cards available for review right now
