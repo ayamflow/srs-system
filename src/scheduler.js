@@ -7,6 +7,9 @@ export class Scheduler {
     constructor(options = {}) {
         if (!options.computeStage) throw new Error('A `computeStage` method must be provided')
         if (!options.intervals) throw new Error('An array of `intervals` must be provided')
+        options.intervals.forEach(interval => {
+            if (interval.interval == undefined) throw new Error('Each member of `intervals` has to have a .interval property')
+        })
 
         this.cards = options.cards || []
         this.#intervals = options.intervals
