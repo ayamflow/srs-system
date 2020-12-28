@@ -3,7 +3,7 @@ export class Card {
     #wrongAnswersCount
     #stage
     #enabled
-    
+
     constructor() {
         this.reset()
     }
@@ -24,12 +24,8 @@ export class Card {
         }
     }
 
-    correct() {
-        
-    }
-
-    wrong() {
-        this.#wrongAnswersCount++
+    answer(correct) {
+        if (!correct) this.#wrongAnswersCount++
     }
 
     reset() {
