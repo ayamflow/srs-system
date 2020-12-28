@@ -14,7 +14,7 @@ You can use this locally with your filesystem, or synchronize with any DB using 
 import { Schedule, Card } from 'srs-system'
 
 let scheduler = new Scheduler({
-    compute: function(card, intervals) {
+    computeStage: function(card) {
         let now = Date.now()
         let errorFactor = Math.ceil(card.wrongAnswersCount * 0.5)
         card.stage = card.stage - errorFactor

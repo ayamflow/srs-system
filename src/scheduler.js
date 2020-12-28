@@ -2,7 +2,7 @@ import { } from './card'
 
 export class Scheduler {
     constructor(options = {}) {
-        if (!options.compute) throw new Error('A `compute` method must be provided')
+        if (!options.computeStage) throw new Error('A `computeStage` method must be provided')
         if (!options.intervals) throw new Error('An array of `intervals` must be provided')
 
         this.cards = options.cards || []
