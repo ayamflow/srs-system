@@ -57,7 +57,7 @@ export class Scheduler {
         card.stage = this.#computeStage(card)
         // Clamp stage between intervals length
         // and 1 (min stage)
-        card.stage = Math.min(card.stage, intervals.length - 1)
+        card.stage = Math.min(card.stage, this.#intervals.length - 1)
         card.stage = Math.max(card.stage, 1)
         
         // set card next review time
