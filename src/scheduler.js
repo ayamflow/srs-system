@@ -1,4 +1,4 @@
-import { } from './card'
+import { dayFromTime, hourFromTime } from './utils'
 
 export class Scheduler {
     #intervals
@@ -33,15 +33,23 @@ export class Scheduler {
         cards.sort((a, b) => {
             return b.timestamp < a.timestamp
         })
-        let timeline = {}
+        let timeline = []
         cards.forEach(card => {
-            let day = 1// figure out day
-            let hour = 1// figure out full hour when available
+            let day = dayFromTime(card.timestamp)
+            let hour = hourFromTime(card.timestamp)
 
             timeline[day] = timeline[day] || []
             timeline[day][hour] = timeline[day][hour] || []
             timeline[day][hour].push(card)
         })
+
+        // Remove empty elements
+        timeline.forEach((day, i) => {
+            timeline[i] = day.filter(hour => hour != null)
+        })
+        timeline = timeline.filter(day => day != null)
+
+        return timeline
     }
 
     update(card) {
