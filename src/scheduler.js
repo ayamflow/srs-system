@@ -25,6 +25,7 @@ export class Scheduler {
     getTimeline(start = Date.now(), end = -1) {
         let cards = this.cards.filter(card => {
             if (end > -1) {
+                end = Math.min(end, 7 * 24 * 60 * 60 * 1000)
                 return card.enabled && card.timestamp >= start && card.timestamp <= end
             }
             return card.enabled && card.timestamp >= start
