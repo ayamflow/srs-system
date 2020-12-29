@@ -17,10 +17,10 @@ export class Card {
     
     toJSON() {
         return {
-            timestamp: -1,
-            wrongAnswersCount: 0,
-            stage: 0,
-            enabled: false
+            timestamp: this.#timestamp,
+            wrongAnswersCount: this.#wrongAnswersCount,
+            stage: this.#stage,
+            enabled: this.#enabled
         }
     }
 
