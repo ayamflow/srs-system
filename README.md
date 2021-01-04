@@ -21,21 +21,21 @@ let scheduler = new Scheduler({
         return stage
     },
 
-    intervals: [{
+    stages: [{
         name: 'newbie',
-        delay: 0 
+        interval: 0 
     }, {
         name: 'advanced beginner',
-        delay: 4 * 60 * 60 * 1000 // 4 hours
+        interval: 4 * 60 * 60 * 1000 // 4 hours
     }, {
         name: 'intermediate',
-        delay: 24 * 60 * 60 * 1000 // 1 day
+        interval: 24 * 60 * 60 * 1000 // 1 day
     }, {
         name: 'advanced',
-        delay: 2 * 24 * 60 * 60 * 1000 // 2 days
+        interval: 2 * 24 * 60 * 60 * 1000 // 2 days
     }, {
         name: 'expert',
-        delay: 7 * 24 * 60 * 60 * 1000 // 1 week
+        interval: 7 * 24 * 60 * 60 * 1000 // 1 week
     }]
 
     // In real life, cards would be associated to a question and a set of answers

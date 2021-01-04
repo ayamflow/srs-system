@@ -1,18 +1,18 @@
 import { dayFromTime, hourFromTime } from './utils'
 
 export class Scheduler {
-    #intervals
+    #stages
     #computeStage
 
     constructor(options = {}) {
         if (!options.computeStage) throw new Error('A `computeStage` method must be provided')
-        if (!options.intervals) throw new Error('An array of `intervals` must be provided')
-        options.intervals.forEach(interval => {
-            if (interval.interval == undefined) throw new Error('Each member of `intervals` has to have a .interval property')
+        if (!options.stages) throw new Error('An array of `stages` must be provided')
+        options.stages.forEach(stage => {
+            if (stage.interval == undefined) throw new Error('Each member of `stages` has to have a .interval property')
         })
 
         this.cards = options.cards || []
-        this.#intervals = options.intervals
+        this.#stages = options.stages
         this.#computeStage = options.computeStage
     }
 
@@ -58,13 +58,13 @@ export class Scheduler {
     update(card) {
         // use user-provided function to update card stage
         card.stage = this.#computeStage(card)
-        // Clamp stage between intervals length
+        // Clamp stage between stages length
         // and 1 (min stage)
-        card.stage = Math.min(card.stage, this.#intervals.length - 1)
+        card.stage = Math.min(card.stage, this.#stages.length - 1)
         card.stage = Math.max(card.stage, 1)
         
         // set card next review time
-        card.timestamp = Date.now() + this.#intervals[card.stage].interval
+        card.timestamp = Date.now() + this.#stages[card.stage].interval
     }
 
     toJSON() {
