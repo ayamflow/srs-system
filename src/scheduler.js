@@ -69,9 +69,7 @@ export class Scheduler {
 
     toJSON() {
         return {
-            cards: this.cards.map(card => card.toJSON()),
-            intervals: this.intervals,
-            scheduler: JSON.stringify(this.updateCard.toString())
+            cards: this.cards.map(card => card.toJSON())
         }
     }
 
@@ -80,7 +78,5 @@ export class Scheduler {
             let card = new Card()
             card.fromJSON(data)
         })
-        this.intervals = json.intervals
-        this.updateCard = JSON.parse()
     }
 }
