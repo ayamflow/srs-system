@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "A (naive) javascript Spaced-Repetition System (SRS)",
   "main": "lib/srssystem.js",
+  "module": "index.js",
   "scripts": {
-    "build": "microbundle build -i ./index.js -o lib/srssystem.js --no-pkg-main -f umd --compress --no-sourcemap"
+    "build": "microbundle build -i ./index.js -o lib/srssystem.js --no-pkg-main -f umd --compress --no-sourcemap",
+    "test": "npx ava",
+    "test-debug": "npx ava debug --break"
   },
-  "module": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ayamflow/srs-system.git"
@@ -25,6 +27,13 @@
   },
   "homepage": "https://github.com/ayamflow/srs-system#readme",
   "devDependencies": {
+    "ava": "^3.15.0",
+    "esm": "^3.2.25",
     "microbundle": "^0.13.0"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
   }
 }
