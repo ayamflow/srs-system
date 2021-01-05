@@ -14,3 +14,25 @@ export function dayFromTime(timestamp) {
 export function hourFromTime(timestamp) {
     return new Date(timestamp).getHours()
 }
+
+export function toArray(value) {
+    if (Array.isArray(value)) return value
+    return [value]
+}
+
+export function random(array) {
+    return array[Math.floor(Math.random() * array.length)]
+}
+
+export function shuffle(array) {
+    let index = array.length
+    while (0 !== index) {
+        let randomIndex = Math.floor(Math.random() * index)
+        index -= 1
+        let temp = array[index]
+        array[index] = array[randomIndex]
+        array[randomIndex] = temp
+    }
+
+    return array
+}
