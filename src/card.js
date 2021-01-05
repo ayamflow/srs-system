@@ -37,6 +37,24 @@ export class Card {
         }
     }
 
+    checkAnswer(value, isFrontSide) {
+        return isFrontSide ? this.checkFrontSide(value) : this.checkBackSide(value)
+    }
+
+    // Can overide to change behaviour
+    checkFrontSide(value) {
+        return this.#frontSide.reduce((reduce, face) => {
+            return value.toLowerCase() == face.toLowerCase() || reduce
+        }, false)
+    }
+
+    // Can overide to change behaviour
+    checkBackSide(value) {
+        return this.#backSide.reduce((reduce, face) => {
+            return value.toLowerCase() == face.toLowerCase() || reduce
+        }, false)
+    }
+
     answer(correct) {
         if (correct) this.#rightAnswersCount++
         else this.#wrongAnswersCount++
