@@ -1,6 +1,7 @@
 export class Card {
     #timestamp
     #wrongAnswersCount
+    #rightAnswersCount
     #stage
     #enabled
 
@@ -10,6 +11,7 @@ export class Card {
 
     fromJSON(json) {
         this.#timestamp = json.timestamp
+        this.#rightAnswersCount = json.rightAnswersCount
         this.#wrongAnswersCount = json.wrongAnswersCount
         this.#stage = json.stage
         this.#enabled = json.enabled
@@ -18,6 +20,7 @@ export class Card {
     toJSON() {
         return {
             timestamp: this.#timestamp,
+            rightAnswersCount: this.#rightAnswersCount,
             wrongAnswersCount: this.#wrongAnswersCount,
             stage: this.#stage,
             enabled: this.#enabled
@@ -25,12 +28,14 @@ export class Card {
     }
 
     answer(correct) {
-        if (!correct) this.#wrongAnswersCount++
+        if (correct) this.#rightAnswersCount++
+        else this.#wrongAnswersCount++
     }
 
     reset() {
         this.#timestamp = -1
         this.#wrongAnswersCount = 0
+        this.#rightAnswersCount = 0
         this.#stage = 0
         this.#enabled = false
     }
@@ -51,6 +56,10 @@ export class Card {
 
     get wrongAnswersCount() {
         return this.#wrongAnswersCount
+    }
+    
+    get rightAnswersCount() {
+        return this.#rightAnswersCount
     }
     
     set timestamp(value) {
