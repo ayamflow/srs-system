@@ -6,9 +6,9 @@ export class Review {
     #questions
     #length
 
-    constructor(scheduler, cards) {
+    constructor(scheduler) {
         this.#scheduler = scheduler
-        this.#questions = generateQuestions(cards)
+        this.#questions = generateQuestions(scheduler.getCards())
         this.#length = this.#questions.length
     }
 
