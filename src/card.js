@@ -1,27 +1,37 @@
+import { toArray } from './utils'
+
 export class Card {
     #timestamp
     #wrongAnswersCount
     #rightAnswersCount
     #stage
+    #frontSide
+    #backSide
     #enabled
 
-    constructor() {
+    constructor(frontSide, backSide) {
+        this.#frontSide = toArray(frontSide)
+        this.#backSide = toArray(backSide)
         this.reset()
     }
 
     fromJSON(json) {
-        this.#timestamp = json.timestamp
+        this.#frontSide = json.frontSide
+        this.#backSide = json.backSide
         this.#rightAnswersCount = json.rightAnswersCount
         this.#wrongAnswersCount = json.wrongAnswersCount
+        this.#timestamp = json.timestamp
         this.#stage = json.stage
         this.#enabled = json.enabled
     }
     
     toJSON() {
         return {
-            timestamp: this.#timestamp,
+            frontSide: this.#frontSide,
+            backSide: this.#backSide,
             rightAnswersCount: this.#rightAnswersCount,
             wrongAnswersCount: this.#wrongAnswersCount,
+            timestamp: this.#timestamp,
             stage: this.#stage,
             enabled: this.#enabled
         }
@@ -52,6 +62,14 @@ export class Card {
 
     get stage() {
         return this.#stage
+    }
+
+    get frontSide() {
+        return this.#frontSide
+    }
+    
+    get backSide() {
+        return this.#backSide
     }
 
     get wrongAnswersCount() {
