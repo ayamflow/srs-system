@@ -20,10 +20,6 @@ export function toArray(value) {
     return [value]
 }
 
-export function random(array) {
-    return array[Math.floor(Math.random() * array.length)]
-}
-
 export function shuffle(array) {
     let index = array.length
     while (0 !== index) {

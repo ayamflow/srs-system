@@ -1,4 +1,4 @@
-import { random, shuffle } from './utils'
+import { shuffle } from './utils'
 
 export class Review {
     #cards
@@ -53,8 +53,8 @@ export class Review {
 // Generate 2 questions per card, one for each side
 function generateQuestions(cards) {
     return shuffle(cards.map(card => {
-        let frontSide = random(card.frontSide)
-        let backSide = random(card.backSide)
+        let frontSide = card.frontSide.join(', ')
+        let backSide = card.backSide.join(', ')
 
         return [{
             side: frontSide,
