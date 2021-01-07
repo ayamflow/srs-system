@@ -1,15 +1,15 @@
 import { random, shuffle } from './utils'
 
 export class Review {
+    #cards
     #scheduler
     #current
     #questions
-    #length
 
     constructor(scheduler) {
+        this.#cards = scheduler.getCards()
         this.#scheduler = scheduler
-        this.#questions = generateQuestions(scheduler.getCards())
-        this.#length = this.#questions.length
+        this.#questions = generateQuestions(this.#cards)
     }
 
     getNext() {
@@ -38,11 +38,15 @@ export class Review {
     }
 
     get length() {
-        return this.#length
+        return this.#cards.length * 2 // 2 questions per card
     }
 
     get done() {
         return this.length - this.#questions.length + (this.#current ? -1 : 0)
+    }
+
+    get cards() {
+        return this.#cards
     }
 }
 
